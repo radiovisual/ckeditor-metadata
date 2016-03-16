@@ -67,7 +67,7 @@ editor.contextMenu.addListener(function (element) {
 });
 ```
 
-To remove the restrictions, you can write your own logic. Something like:
+To remove these restrictions, you can write your own logic. Something like:
 
 ```js
 editor.contextMenu.addListener(function (element) {

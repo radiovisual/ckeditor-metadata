@@ -47,7 +47,7 @@ I wont be accepting pull requests on this project because it's just too speciali
 enough (nor am I a fan) to justify spending much time on this plugin. With that said, it would be really easy
 to customize this plugin to be more universal, allowing you to add metadata on any element, of any type. So you can treat 
 this project like a boilerplate to get you started on your own metadata plugin. To do so, simply fork this project, then
-change [this section](https://github.com/radiovisual/ckeditor-metadata/plugin.js#21) of `plugin.js`:
+change [this section](https://github.com/radiovisual/ckeditor-metadata/blob/master/plugin.js#L21) of `plugin.js`:
 
 ```js
 // currently, the context menu only appears on these tags:
@@ -78,7 +78,7 @@ editor.contextMenu.addListener(function (element) {
 });
 ```
 
-From there, all you need to do is add your custom metadata types to [dialog/metadata.js](https://github.com/radiovisual/ckeditor-metadata/dialog/metadata.js).
+From there, all you need to do is add your custom metadata types to [dialogs/metadata.js](https://github.com/radiovisual/ckeditor-metadata/blob/master/dialogs/metadata.js#L12).
 
 ## License
 

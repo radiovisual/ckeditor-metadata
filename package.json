@@ -1,0 +1,32 @@
+{
+  "name": "ckeditor-metadata",
+  "version": "0.0.1",
+  "description": "Manage metadata of selected CKEditor elements",
+  "main": "plugin.js",
+  "scripts": {
+    "test": "xo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radiovisual/ckeditor-metadata.git"
+  },
+  "keywords": [
+    "ckeditor",
+    "metadata",
+    "edit",
+    "attributes"
+  ],
+  "author": {
+    "name": "Michael Wuergler",
+    "email": "senjudev@gmail.com",
+    "url": "http://numetriclabs.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/radiovisual/ckeditor-metadata/issues"
+  },
+  "homepage": "https://github.com/radiovisual/ckeditor-metadata#readme",
+  "devDependencies": {
+    "xo": "^0.13.0"
+  }
+}

@@ -23,17 +23,20 @@ The metadata managed by this plugin:
 
 1. Copy the metadata plugin files to your CKEditor's plugin folder: `ckeditor/plugins/`
 2. Add the plugin to the CKEDITOR configuration:
-```js
-CKEDITOR.config.extraPlugins = 'metadata';
-```
+
+    ```js
+    CKEDITOR.config.extraPlugins = 'metadata';
+    ```
 3. Ensure that this plugin can create content:
-```js
-CKEDITOR.config.allowedContent = true;
-```
+
+    ```js
+    CKEDITOR.config.allowedContent = true;
+    ```
 4. For best results, disable the default `iframe` plugin:
-```js
-CKEDITOR.config.removePlugins = 'iframe';
-```
+
+    ```js
+    CKEDITOR.config.removePlugins = 'iframe';
+    ```
 
 ## Usage
 

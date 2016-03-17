@@ -46,7 +46,7 @@ Once installed, you can right-click on the relevant tags within your editor and 
 
 ## Customization
 
-I wont be accepting pull requests on this project because it's just too specialized, and I don't work with CKEditor
+I wont be accepting opinionated pull requests on this project because it's just too specialized, and I don't work with CKEditor
 enough (nor am I a fan) to justify spending much time on this plugin. With that said, it would be really easy
 to customize this plugin to be more universal, allowing you to add metadata on any element, of any type. So you can treat 
 this project like a boilerplate to get you started on your own metadata plugin. To do so, simply fork this project, then

@@ -13,7 +13,6 @@ CKEDITOR.dialog.add('metadataDialog', function (editor) {
 				type: 'text',
 				id: 'caption',
 				label: 'Caption',
-				validate: CKEDITOR.dialog.validate.notEmpty('Caption field cannot be empty.'),
 				setup: function (element) {
 					this.setValue(element.getAttribute('data-caption') || '');
 				},
@@ -24,7 +23,6 @@ CKEDITOR.dialog.add('metadataDialog', function (editor) {
 				type: 'text',
 				id: 'credit',
 				label: 'Credit',
-				validate: CKEDITOR.dialog.validate.notEmpty('Credit field cannot be empty.'),
 				setup: function (element) {
 					this.setValue(element.getAttribute('data-credit') || '');
 				},
@@ -62,27 +60,44 @@ CKEDITOR.dialog.add('metadataDialog', function (editor) {
 			var selection = editor.getSelection();
 
 			var element = selection.getStartElement();
+
+			// save a copy of the root element in case we need to reference it.
+			// For example, in case this element is a fakeAudio element and we
+			// want to update the 'data-cke-realelement'
+			this.rootElement = element;
+
 			this.isIframe = false;
+			this.isFakeAudio = false;
 
 			if (element) {
 				var div = element.getAscendant('div', true);
 				var img = element.getAscendant('img', true);
-				var isIFrameWrapper = div ? div.hasClass('iframe-insulator') : null;
+				var isIFrameInsulator = div ? div.hasClass('iframe-insulator') : null;
 
-				if (div && isIFrameWrapper) {
+				if (div && isIFrameInsulator) {
 					// assign the containing iframe to the element
 					// because that is where the metadata is stored
 					// NOTE: Accessing via $ seems hacky. Is there a better way?
 					element = div.$.firstElementChild;
 					this.isIframe = true;
 				} else if (img) {
-					element = img;
+					// is this a cke_audio image?
+					if (img.hasClass('cke_audio')) {
+						console.log('was a cke_audio', img.data('cke-realelement'));
+						var e = decodeURIComponent(img.data('cke-realelement'));
+						element = CKEDITOR.dom.element.createFromHtml(e);
+						this.isFakeAudio = true;
+					} else {
+						// just a regular image
+						console.log('just a regular image');
+						element = img;
+					}
 				}
 			}
 			// So we can access the element in onOK
 			this.element = element;
 
-			// call the setup function on all the contents.elements fields
+			// Call the setup function on all the contents.elements fields
 			this.setupContent(element);
 		},
 		onOk: function () {
@@ -99,6 +114,13 @@ CKEDITOR.dialog.add('metadataDialog', function (editor) {
 			this.element.setAttribute('data-credit', attributes.credit);
 			this.element.setAttribute('data-tweet', attributes.tweet);
 			this.element.setAttribute('data-facebook', attributes.facebook);
+
+			// if this was a fakeAudio object, then you need to replace the 'data-cke-realelement'
+			if (this.isFakeAudio) {
+				var encoded = encodeURIComponent(this.element.getOuterHtml());
+				this.rootElement.setAttribute('data-cke-realelement', encoded);
+			}
+
 		}
 	};
 });

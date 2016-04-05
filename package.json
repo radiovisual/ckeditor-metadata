@@ -28,5 +28,10 @@
   "homepage": "https://github.com/radiovisual/ckeditor-metadata#readme",
   "devDependencies": {
     "xo": "^0.13.0"
+  },
+  "xo": {
+    "envs": [
+      "browser"
+    ]
   }
 }

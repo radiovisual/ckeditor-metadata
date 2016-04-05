@@ -1,4 +1,5 @@
-/* eslint-disable no-undef, new-cap */
+/* global CKEDITOR  */
+/* eslint-disable new-cap */
 
 CKEDITOR.plugins.add('metadata', {
 	// Important: icon file must match the button name, in lowercase

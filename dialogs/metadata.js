@@ -1,4 +1,4 @@
-/* eslint-disable no-undef  */
+/* global CKEDITOR  */
 
 CKEDITOR.dialog.add('metadataDialog', function (editor) {
 	return {
@@ -120,7 +120,6 @@ CKEDITOR.dialog.add('metadataDialog', function (editor) {
 				var encoded = encodeURIComponent(this.element.getOuterHtml());
 				this.rootElement.setAttribute('data-cke-realelement', encoded);
 			}
-
 		}
 	};
 });

@@ -11,6 +11,16 @@ CKEDITOR.dialog.add('metadataDialog', function (editor) {
 			label: 'Basic Settings',
 			elements: [{
 				type: 'text',
+				id: 'title',
+				label: 'Title',
+				setup: function (element) {
+					this.setValue(element.getAttribute('data-title') || '');
+				},
+				commit: function (element) {
+					element.setText(this.getValue());
+				}
+			}, {
+				type: 'text',
 				id: 'caption',
 				label: 'Caption',
 				setup: function (element) {
@@ -75,9 +85,8 @@ CKEDITOR.dialog.add('metadataDialog', function (editor) {
 				var isIFrameInsulator = div ? div.hasClass('iframe-insulator') : null;
 
 				if (div && isIFrameInsulator) {
-					// assign the containing iframe to the element
-					// because that is where the metadata is stored
-					// NOTE: Accessing via $ seems hacky. Is there a better way?
+					// assign the containing iframe to the element because that is where the metadata is stored
+					// NOTE: Accessing via $ seems hacky. There is probably a better way, but I don't care enough ATM.
 					element = div.$.firstElementChild;
 					this.isIframe = true;
 				} else if (img) {
@@ -102,12 +111,14 @@ CKEDITOR.dialog.add('metadataDialog', function (editor) {
 			var dialog = this;
 
 			var attributes = {
+				title: dialog.getValueOf('tab-basic', 'title'),
 				caption: dialog.getValueOf('tab-basic', 'caption'),
 				credit: dialog.getValueOf('tab-basic', 'credit'),
 				tweet: dialog.getValueOf('tab-social', 'tweetText'),
 				facebook: dialog.getValueOf('tab-social', 'facebookText')
 			};
 
+			this.element.setAttribute('data-title', attributes.title);
 			this.element.setAttribute('data-caption', attributes.caption);
 			this.element.setAttribute('data-credit', attributes.credit);
 			this.element.setAttribute('data-tweet', attributes.tweet);

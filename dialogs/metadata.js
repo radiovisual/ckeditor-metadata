@@ -83,13 +83,11 @@ CKEDITOR.dialog.add('metadataDialog', function (editor) {
 				} else if (img) {
 					// is this a cke_audio image?
 					if (img.hasClass('cke_audio')) {
-						console.log('was a cke_audio', img.data('cke-realelement'));
-						var e = decodeURIComponent(img.data('cke-realelement'));
-						element = CKEDITOR.dom.element.createFromHtml(e);
+						var decoded = decodeURIComponent(img.data('cke-realelement'));
+						element = CKEDITOR.dom.element.createFromHtml(decoded);
 						this.isFakeAudio = true;
 					} else {
 						// just a regular image
-						console.log('just a regular image');
 						element = img;
 					}
 				}
@@ -115,7 +113,8 @@ CKEDITOR.dialog.add('metadataDialog', function (editor) {
 			this.element.setAttribute('data-tweet', attributes.tweet);
 			this.element.setAttribute('data-facebook', attributes.facebook);
 
-			// if this was a fakeAudio object, then you need to replace the 'data-cke-realelement'
+			// if this was a fakeAudio object, then you need to replace the
+			// 'data-cke-realelement' attribute with encoded data
 			if (this.isFakeAudio) {
 				var encoded = encodeURIComponent(this.element.getOuterHtml());
 				this.rootElement.setAttribute('data-cke-realelement', encoded);

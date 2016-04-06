@@ -9,8 +9,8 @@ separate `data-` attributes to the HTML element.
 attributes on the following tags: `<img>` and `<div class="iframe-insulator">`. If you want more universal support, read the 
 [customization instructions](https://github.com/radiovisual/ckeditor-metadata#customization) below.
 
-This plugin is meant to be used with [ckeditor-iframeinsulator](https://github.com/radiovisual/ckeditor-iframeinsulator), which 
-allows you to attach CKEditor context menus to embedded iframes (even ones that override the right click behavior).
+This plugin is meant to be used with [ckeditor-iframeinsulator](https://github.com/radiovisual/ckeditor-iframeinsulator) and [ckeditor-audioinsulator](https://github.com/radiovisual/ckeditor-audioinsulator), which 
+allows you to attach CKEditor context menus to embedded iframes and audio tags (even ones that override/disable the right click behavior).
 
 The metadata managed by this plugin:
 
@@ -22,21 +22,15 @@ The metadata managed by this plugin:
 
 ## Installation
 
-1. Copy the metadata plugin files to your CKEditor's plugin folder: `ckeditor/plugins/`
+1. Add the metadata plugin CKEditor using **one of these two** methods:
+    
+    1. Copy the contents of this repo into CKEdidor's plugin directory: `ckeditor/plugins/metadata`; or 
+    2. Add the metadata plugin via `CKEDITOR.plugins.addExternal('metadata', 'path/to/custom/location');`
+  
 2. Add the plugin to the CKEDITOR configuration:
 
     ```js
     CKEDITOR.config.extraPlugins = 'metadata';
-    ```
-3. Ensure that this plugin can create content:
-
-    ```js
-    CKEDITOR.config.allowedContent = true;
-    ```
-4. For best results, disable the default `iframe` plugin:
-
-    ```js
-    CKEDITOR.config.removePlugins = 'iframe';
     ```
 
 ## Usage

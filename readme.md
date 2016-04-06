@@ -20,18 +20,22 @@ The metadata managed by this plugin:
 - Tweet Text
 - Facebook Text
 
+
 ## Installation
 
 1. Add the metadata plugin CKEditor using **one of these two** methods:
     
     1. Copy the contents of this repo into CKEdidor's plugin directory: `ckeditor/plugins/metadata`; or 
-    2. Add the metadata plugin via `CKEDITOR.plugins.addExternal('metadata', 'path/to/custom/location');`
+    2. Add the metadata plugin via `CKEDITOR.plugins.addExternal('metadata', 'path/to/custom/location/metadata');`
   
 2. Add the plugin to the CKEDITOR configuration:
 
     ```js
     CKEDITOR.config.extraPlugins = 'metadata';
     ```
+
+**Tip:** Make sure the plugin folder you register with CKEditor is named `metadata` or CKEditor won't load it correctly. 
+
 
 ## Usage
 

@@ -82,6 +82,11 @@ editor.contextMenu.addListener(function (element) {
 
 From there, all you need to do is add your custom metadata types to [dialogs/metadata.js](https://github.com/radiovisual/ckeditor-metadata/blob/master/dialogs/metadata.js#L12).
 
+## Realted
+
+- [ckeditor-iframeinsulator](https://github.com/radiovisual/ckeditor-iframeinsulator)
+- [ckeditor-audioinsulator](https://github.com/radiovisual/ckeditor-audioinsulator)
+
 ## License
 
 MIT @ [Michael Wuergler](http://numetriclabs.com)

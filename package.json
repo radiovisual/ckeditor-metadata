@@ -1,6 +1,6 @@
 {
   "name": "ckeditor-metadata",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Manage metadata of selected CKEditor elements",
   "main": "plugin.js",
   "scripts": {

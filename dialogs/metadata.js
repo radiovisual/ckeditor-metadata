@@ -78,6 +78,7 @@ CKEDITOR.dialog.add('metadataDialog', function (editor) {
 
 			this.isIframe = false;
 			this.isFakeAudio = false;
+			this.isImage = false;
 
 			if (element) {
 				var div = element.getAscendant('div', true);
@@ -97,6 +98,7 @@ CKEDITOR.dialog.add('metadataDialog', function (editor) {
 						this.isFakeAudio = true;
 					} else {
 						// just a regular image
+						this.isImage = true;
 						element = img;
 					}
 				}
@@ -118,6 +120,9 @@ CKEDITOR.dialog.add('metadataDialog', function (editor) {
 				facebook: dialog.getValueOf('tab-social', 'facebookText')
 			};
 
+			if (this.isImage) {
+				this.element.setAttribute('class', 'metadataimg');
+			}
 			this.element.setAttribute('data-title', attributes.title);
 			this.element.setAttribute('data-caption', attributes.caption);
 			this.element.setAttribute('data-credit', attributes.credit);
